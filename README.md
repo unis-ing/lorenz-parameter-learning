@@ -1,3 +1,4 @@
+Source code for a study of dynamic parameter learning from partial observations of the Lorenz eqautions.
 
 ## Prerequisites
 The packages [`alphashape`](https://pypi.org/project/alphashape/) and [`descartes`](https://pypi.org/project/descartes/) are used to produce bounding polygons in the figures.
@@ -14,7 +15,12 @@ The packages [`alphashape`](https://pypi.org/project/alphashape/) and [`descarte
 * [`estimate.py`](https://github.com/unis-ing/lorenz_parameter_learning/blob/main/estimate.py): Defines a function `estimate()` for estimating the Lorenz parameters from continuous observations of the solution.
 * [`save.py`](https://github.com/unis-ing/lorenz_parameter_learning/blob/main/save.py): Helper functions for managing simulation data.
 * [`plot.py`](https://github.com/unis-ing/lorenz_parameter_learning/blob/main/plot.py): Helper functions for producing the parameter sweep figures.
+* [`lorenz_AOT_simple.m`](https://github.com/unis-ing/lorenz-parameter-learning/blob/main/lorenz_AOT_simple.m): A MATLAB script for estimating the Lorenz parameters from discrete-in-time observations of the solution. The amplitude of measurement noise and stochastic forcing can be controlled through parameters `eta` and `epsilon`.
 
 ### Notebooks
 * [`demo.ipynb`](https://github.com/unis-ing/lorenz_parameter_learning/blob/main/demo.ipynb): Example usage of `estimate()`.
 * [`figures.ipynb`](https://github.com/unis-ing/lorenz_parameter_learning/blob/main/figures.ipynb): Code for producing the parameter sweep figures found in the paper.
+
+## Authors
+* Adam Larios (University of Nebraska-Lincoln)
+* Eunice Ng (Hunter College)
