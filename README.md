@@ -1,6 +1,6 @@
 
 ## Prerequisites
-The [`alphashape`](https://pypi.org/project/alphashape/) and [`descartes`](https://pypi.org/project/descartes/) libraries are used for producing bounding polygons in the figures.
+The packages [`alphashape`](https://pypi.org/project/alphashape/) and [`descartes`](https://pypi.org/project/descartes/) are used to produce bounding polygons in the figures.
 
 ## Contents
 ### Data
