@@ -4,8 +4,11 @@ The [`alphashape`](https://pypi.org/project/alphashape/) and [`descartes`](https
 
 ## Contents
 ### Data
+* [`data/sigma/`](https://github.com/unis-ing/lorenz-parameter-learning/tree/main/data/sigma): Continuously estimating σ.
+* [`data/sigma_translated/`](https://github.com/unis-ing/lorenz-parameter-learning/tree/main/data/sigma): Continuously estimating σ using an alternate, "translated" recovery formula.
 * [`data/rho_beta/`](https://github.com/unis-ing/lorenz-parameter-learning/tree/main/data/rho_beta): Continuously estimating ρ and β.
 * [`data/rho_sigma/`](https://github.com/unis-ing/lorenz-parameter-learning/tree/main/data/rho_sigma): Continuously estimating σ and ρ.
+* [`data/sigma_beta/`](https://github.com/unis-ing/lorenz-parameter-learning/tree/main/data/sigma_beta): Continuously estimating σ and β.
 
 ### Code
 * [`estimate.py`](https://github.com/unis-ing/lorenz_parameter_learning/blob/main/estimate.py): Defines a function `estimate()` for estimating the Lorenz parameters from continuous observations of the solution.
