@@ -209,7 +209,7 @@ def make_one_param_plot(params, errs, periods, spirals,
         cmap = shiftedColorMap(cmap, midpoint=midpoint, name='shifted')
 
     # make figure
-    fig, ax = plt.subplots(figsize=(6.5,5))
+    fig, ax = plt.subplots(figsize=(5.5,4.5))
 
     # plot the critical rho curve
     foo = SIGMAs = np.linspace(1+8/3+0.001, max(plot_s), 5000)
@@ -289,7 +289,7 @@ def make_one_param_plot(params, errs, periods, spirals,
     # use the same colormap
 
     # make figure
-    fig, ax = plt.subplots(figsize=(6.5,5))
+    fig, ax = plt.subplots(figsize=(5.85,4.5))
 
     # ------------------ copy from prev plot --------------------
     # plot the critical rho curve
@@ -371,7 +371,7 @@ def make_one_param_plot(params, errs, periods, spirals,
 def make_two_param_plot(inferred_params, err_param, 
                         params, errs, periods, spirals, 
                         MIN=None, MAX=None, LOW_PD = 3,
-                        LEGEND_ON=True, save=None):
+                        CBAR_ON=True, save=None):
     '''
     The axes conventions are: (rho, sigma), (sigma, beta) and (rho, beta)
 
@@ -388,7 +388,7 @@ def make_two_param_plot(inferred_params, err_param,
         MIN    : min value on colorbar. if None, use max from errs.
         MAX    : max value on colorbar. if None, use min from errs.
         LOW_PD :
-        LEGEND_ON : toggle legend on/off
+        CBAR_ON : toggle colorbar on/off
         save : 
     '''
     assert inferred_params in ['RS', 'SB', 'RB'], 'Needs to be one of "RS", "SB", or "RB".'
@@ -406,7 +406,7 @@ def make_two_param_plot(inferred_params, err_param,
                 'SB': r'$\Delta\sigma+\Delta\beta$'}
     p_to_label = {'S': r'Prandtl $\sigma$', 
                   'R': r'Rayleigh $\rho$', 
-                  'B': r'Physical parameter $\beta$'}
+                  'B': r'Parameter $\beta$'}
     p_to_err_label = {'S': r'$\log_{10}|\tilde{\sigma}-\sigma|$', 
                       'R': r'$\log_{10}|\tilde{\rho}-\rho|$', 
                       'B': r'$\log_{10}|\tilde{\beta}-\beta|$',
@@ -447,10 +447,10 @@ def make_two_param_plot(inferred_params, err_param,
     # =====================
     # make the figure
     # =====================
-    if LEGEND_ON:
-        fig, ax = plt.subplots(figsize=(6.5,5))
+    if CBAR_ON:
+        fig, ax = plt.subplots(figsize=(4.55,3.5))
     else:
-        fig, ax = plt.subplots(figsize=(6.5,4.5))
+        fig, ax = plt.subplots(figsize=(3.5,3.5))
 
     if len(se) == 1:
         plt.title(r'Estimating ({}, {}) (colored by {})'.format(p_to_str[s1], 
@@ -583,25 +583,23 @@ def make_two_param_plot(inferred_params, err_param,
     # plot points w update
     idx = np.where(e != np.log10(20))
     sc = ax.scatter(d1[idx], d2[idx], c=e[idx], cmap=cmap, 
-                    edgecolor='k', s=50, alpha=0.9, linewidth=0.75, zorder=2)
+                    edgecolor='k', s=20, alpha=0.9, linewidth=0.75, zorder=2)
 
     # plot points w no update
     idx = np.where(e == np.log10(20))
-    ax.scatter(d1[idx], d2[idx], color='white', edgecolor='k', s=50, 
+    ax.scatter(d1[idx], d2[idx], color='white', edgecolor='k', s=20, 
                alpha=0.9, linewidth=0.75, zorder=2)
 
     # plot points w 0 error
     idx = np.where(e == -np.inf)
-    ax.scatter(d1[idx], d2[idx], marker='s', color='white', edgecolor='k', s=50, 
+    ax.scatter(d1[idx], d2[idx], marker='s', color='white', edgecolor='k', s=20, 
                alpha=0.9, linewidth=0.75, zorder=2,
                label='Machine precision')
 
-    plt.colorbar(sc, label=p_to_err_label[se])
+    if CBAR_ON:
+        plt.colorbar(sc, label=p_to_err_label[se])
     plt.xlabel(p_to_label[s1])
     plt.ylabel(p_to_label[s2])
-
-    if LEGEND_ON:
-        plt.legend(loc='lower center', ncol=3, bbox_to_anchor=(0.5, -0.3))
 
     plt.tight_layout()
 
